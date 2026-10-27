@@ -152,7 +152,7 @@ Abre `incidencias_soporte.csv` con un editor de texto o con una hoja de cálculo
 
 **Evidencia 01:** captura donde se vea la comprobación de las conexiones y el archivo CSV. Puedes hacer dos capturas si no cabe todo de forma legible.
 
-Nombre: `images/01_conexiones_y_csv.png`
+Nombre: `images/01_conexiones_y_csv.PNG`
 
 ---
 
@@ -198,7 +198,7 @@ Deben aparecer seis columnas.
 
 **Evidencia 02:** captura del resultado de creación y/o de la estructura de la tabla.
 
-Nombre: `images/02_tabla_creada.png`
+Nombre: `images/02_tabla_creada.PNG`
 
 ### Si aparece un error
 
@@ -298,11 +298,11 @@ Deben aparecer los identificadores 1, 2, 3, 4 y 5.
 
 **Evidencia 03:** captura de la tabla con las cinco incidencias visibles.
 
-Nombre: `images/03_datos_importados.png`
+Nombre: `images/03_datos_importados.PNG`
 
 **Evidencia 04:** captura de la consulta `COUNT(*)` que demuestra que hay cinco registros.
 
-Nombre: `images/04_conteo_registros.png`
+Nombre: `images/04_conteo_registros.PNG`
 
 ### Si la importación falla
 
@@ -349,7 +349,7 @@ En este punto, el rechazo es el resultado esperado.
 
 **Evidencia 05:** captura donde se vea la consulta y el error.
 
-Nombre: `images/05_acceso_denegado_tabla.png`
+Nombre: `images/05_acceso_denegado_tabla.PNG`
 
 Si la consulta devuelve datos, comprueba que la conexión activa es realmente `USUARIO_RESTRINGIDO`. Si lo es, no continúes hasta que el profesor revise los permisos existentes.
 
@@ -378,7 +378,7 @@ La vista incluye cuatro columnas y excluye `cliente` y `email_contacto`.
 
 **Evidencia 06:** captura del resultado correcto de la creación de la vista.
 
-Nombre: `images/06_vista_creada.png`
+Nombre: `images/06_vista_creada.PNG`
 
 ### Paso 2. Conceder el permiso de consulta
 
@@ -394,7 +394,7 @@ Esta sentencia permite al usuario restringido consultar la vista. No le concede 
 
 **Evidencia 07:** captura del resultado de la concesión del permiso.
 
-Nombre: `images/07_permiso_concedido.png`
+Nombre: `images/07_permiso_concedido.PNG`
 
 Si aparece `ORA-01031`, detente y consulta al profesor. No concedas privilegios adicionales ni cambies la configuración del servidor.
 
@@ -425,7 +425,7 @@ La consulta debe mostrar las incidencias sin incluir los datos de contacto.
 
 **Evidencia 08:** captura de la consulta y sus cinco filas.
 
-Nombre: `images/08_consulta_vista_correcta.png`
+Nombre: `images/08_consulta_vista_correcta.PNG`
 
 ### Prueba 2. Intentar consultar el correo desde la vista
 
@@ -442,7 +442,7 @@ Este error es esperado. No significa que la columna no exista en la tabla origin
 
 **Evidencia 09:** captura de la consulta y del error.
 
-Nombre: `images/09_email_no_disponible.png`
+Nombre: `images/09_email_no_disponible.PNG`
 
 ### Prueba 3. Repetir el intento de acceso directo a la tabla
 
@@ -457,7 +457,7 @@ Si no se han concedido permisos directos sobre la tabla, el acceso debe seguir r
 
 **Evidencia 10:** captura del intento de acceso denegado.
 
-Nombre: `images/10_tabla_original_denegada.png`
+Nombre: `images/10_tabla_original_denegada.PNG`
 
 ### Qué debes haber demostrado
 
@@ -504,87 +504,6 @@ Responde con tus propias palabras. Relaciona las respuestas con las acciones y l
 
 ¿Por qué resulta útil documentar la estructura de la tabla, las columnas de la vista y los permisos antes de comparar esta solución con otra base de datos, como MySQL?
 
----
 
-## 13. Entrega
 
-Entrega un archivo ZIP con tu README cumplimentado y las capturas reales de tu trabajo.
 
-La estructura será:
-
-```text
-Reto03_ApellidoNombre/
-├── README.md
-├── incidencias_soporte.csv
-└── images/
-    ├── 01_conexiones_y_csv.png
-    ├── 02_tabla_creada.png
-    ├── 03_datos_importados.png
-    ├── 04_conteo_registros.png
-    ├── 05_acceso_denegado_tabla.png
-    ├── 06_vista_creada.png
-    ├── 07_permiso_concedido.png
-    ├── 08_consulta_vista_correcta.png
-    ├── 09_email_no_disponible.png
-    └── 10_tabla_original_denegada.png
-```
-
-El CSV debe estar incluido para que la entrega conserve el archivo de entrada utilizado. No es necesario modificarlo.
-
-Antes de entregar:
-
-- Comprueba que las diez evidencias están incluidas.
-- Asegúrate de que las capturas son tuyas y muestran resultados reales de DBeaver.
-- Comprueba que las consultas, los resultados y los errores se leen claramente.
-- Responde las siete preguntas del análisis.
-- Explica cualquier incidencia que te haya impedido completar una prueba.
-- No inventes resultados ni sustituyas capturas reales por ejemplos.
-
-**Nombre del archivo ZIP:** `Reto03_ApellidoNombre.zip`
-
----
-
-## 14. Rúbrica de evaluación
-
-La puntuación máxima es de **10 puntos**.
-
-| Criterio | Puntuación |
-|---|---:|
-| Comprobación de las conexiones y uso correcto de los usuarios | 1 punto |
-| Creación correcta de la tabla y definición de columnas | 1 punto |
-| Importación del CSV y comprobación de los cinco registros | 2 puntos |
-| Creación de la vista con las cuatro columnas solicitadas | 1,5 puntos |
-| Concesión del permiso `SELECT` sobre la vista | 1 punto |
-| Pruebas de acceso: vista disponible, correo no disponible y tabla original protegida | 1,5 puntos |
-| Respuestas razonadas y relacionadas con el caso empresarial | 1 punto |
-| Organización, claridad y autenticidad de las evidencias | 1 punto |
-| **TOTAL** | **10 puntos** |
-
-Se valorará tanto el resultado como la comprensión del procedimiento. Si una prueba falla por un problema del entorno, documentar el error y explicar lo sucedido es mejor que alterar permisos o inventar una captura.
-
----
-
-## 15. Checklist final
-
-- [ ] He comprobado las conexiones `admin_udit` y `usuario_restringido`.
-- [ ] He examinado el archivo `incidencias_soporte.csv`.
-- [ ] He creado la tabla `incidencias_reto03`.
-- [ ] He importado los cinco registros con DBeaver.
-- [ ] He comprobado el número de filas y los identificadores.
-- [ ] He probado el acceso directo a la tabla con el usuario restringido.
-- [ ] He creado `v_incidencias_consulta`.
-- [ ] He concedido `SELECT` sobre la vista.
-- [ ] He consultado la vista con el usuario restringido.
-- [ ] He comprobado que `email_contacto` no está disponible desde la vista.
-- [ ] He repetido la prueba de acceso directo a la tabla.
-- [ ] He respondido las preguntas de análisis.
-- [ ] He incluido las diez evidencias reales.
-- [ ] He preparado el ZIP con el README, el CSV y la carpeta `images`.
-
-## Cierre
-
-En este reto has trabajado con un flujo habitual en una empresa: recibir datos externos, incorporarlos a una base de datos, seleccionar la información que necesita un equipo y limitar el acceso mediante permisos.
-
-La idea principal es que **cada usuario debe disponer de los datos y privilegios necesarios para su trabajo, sin obtener acceso innecesario al resto de la información**.
-
-La solución documentada podrá servir como base para comparar posteriormente cómo se realizan tareas equivalentes en MySQL.
