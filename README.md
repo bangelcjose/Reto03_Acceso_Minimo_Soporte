@@ -152,7 +152,7 @@ Abre `incidencias_soporte.csv` con un editor de texto o con una hoja de cálculo
 
 **Evidencia 01:** captura donde se vea la comprobación de las conexiones y el archivo CSV. Puedes hacer dos capturas si no cabe todo de forma legible.
 
-Nombre: `images/01_conexiones_y_csv.PNG`
+![Captura archivo CSV](images/01_conexiones_y_csv.PNG)
 
 ---
 
@@ -198,7 +198,7 @@ Deben aparecer seis columnas.
 
 **Evidencia 02:** captura del resultado de creación y/o de la estructura de la tabla.
 
-Nombre: `images/02_tabla_creada.PNG`
+![ ](images/02_tabla_creada.PNG)
 
 ### Si aparece un error
 
@@ -298,11 +298,11 @@ Deben aparecer los identificadores 1, 2, 3, 4 y 5.
 
 **Evidencia 03:** captura de la tabla con las cinco incidencias visibles.
 
-Nombre: `images/03_datos_importados.PNG`
+![ ](images/03_datos_importados.PNG)
 
 **Evidencia 04:** captura de la consulta `COUNT(*)` que demuestra que hay cinco registros.
 
-Nombre: `images/04_conteo_registros.PNG`
+![ ](images/04_conteo_registros.PNG)
 
 ### Si la importación falla
 
@@ -349,7 +349,7 @@ En este punto, el rechazo es el resultado esperado.
 
 **Evidencia 05:** captura donde se vea la consulta y el error.
 
-Nombre: `images/05_acceso_denegado_tabla.PNG`
+![ ](images/05_acceso_denegado_tabla.PNG)
 
 Si la consulta devuelve datos, comprueba que la conexión activa es realmente `USUARIO_RESTRINGIDO`. Si lo es, no continúes hasta que el profesor revise los permisos existentes.
 
@@ -378,7 +378,7 @@ La vista incluye cuatro columnas y excluye `cliente` y `email_contacto`.
 
 **Evidencia 06:** captura del resultado correcto de la creación de la vista.
 
-Nombre: `images/06_vista_creada.PNG`
+![ ](images/06_vista_creada.PNG)
 
 ### Paso 2. Conceder el permiso de consulta
 
@@ -394,7 +394,7 @@ Esta sentencia permite al usuario restringido consultar la vista. No le concede 
 
 **Evidencia 07:** captura del resultado de la concesión del permiso.
 
-Nombre: `images/07_permiso_concedido.PNG`
+![ ](images/07_permiso_concedido.PNG)
 
 Si aparece `ORA-01031`, detente y consulta al profesor. No concedas privilegios adicionales ni cambies la configuración del servidor.
 
@@ -425,7 +425,7 @@ La consulta debe mostrar las incidencias sin incluir los datos de contacto.
 
 **Evidencia 08:** captura de la consulta y sus cinco filas.
 
-Nombre: `images/08_consulta_vista_correcta.PNG`
+![ ](images/08_consulta_vista_correcta.PNG)
 
 ### Prueba 2. Intentar consultar el correo desde la vista
 
@@ -442,7 +442,7 @@ Este error es esperado. No significa que la columna no exista en la tabla origin
 
 **Evidencia 09:** captura de la consulta y del error.
 
-Nombre: `images/09_email_no_disponible.PNG`
+![ ](images/09_email_no_disponible.PNG)
 
 ### Prueba 3. Repetir el intento de acceso directo a la tabla
 
@@ -457,7 +457,7 @@ Si no se han concedido permisos directos sobre la tabla, el acceso debe seguir r
 
 **Evidencia 10:** captura del intento de acceso denegado.
 
-Nombre: `images/10_tabla_original_denegada.PNG`
+![ ](images/10_tabla_original_denegada.PNG)
 
 ### Qué debes haber demostrado
 
@@ -479,30 +479,37 @@ Responde con tus propias palabras. Relaciona las respuestas con las acciones y l
 ### Pregunta 1. Origen de los datos
 
 ¿Qué archivo has recibido y qué pasos has seguido para incorporar sus registros a Oracle?
+Recibí el archivo plano incidencias_soporte.csv con 5 registros. Creé la tabla incidencias_reto03 en Oracle con el usuario admin_udit (definiendo id_incidencia como clave primaria) y utilicé el asistente de importación de DBeaver para cargar los datos mapeando cada columna del CSV.
 
 ### Pregunta 2. Integridad de los datos
 
 ¿Cómo has comprobado que se han importado los cinco registros? ¿Por qué es importante verificar el número de filas después de una importación?
+Comprobé la carga ejecutando SELECT * para revisar visualmente los identificadores del 1 al 5 y SELECT COUNT(*) para confirmar que devolvía exactamente 5. Es importante verificar el conteo para garantizar que no se hayan perdido registros ni duplicado filas durante la importación.
 
 ### Pregunta 3. Diseño de la vista
 
 ¿Qué cuatro columnas muestra `v_incidencias_consulta`? ¿Por qué has dejado fuera `cliente` y `email_contacto`?
+Muestra id_incidencia, asunto, estado y prioridad. Se dejaron fuera cliente y email_contacto para aplicar el principio de minimización de datos, ya que el equipo de soporte solo necesita los datos técnicos de la incidencia y no la información personal del cliente.
 
 ### Pregunta 4. Permisos
 
 ¿Por qué `usuario_restringido` puede consultar la vista, pero no debería poder consultar directamente la tabla original?
+Porque a usuario_restringido solo se le otorgó el privilegio GRANT SELECT sobre la vista v_incidencias_consulta. Al no tener permisos directos sobre la tabla origen incidencias_reto03, Oracle bloquea cualquier intento de acceder a ella directamente.
 
 ### Pregunta 5. Interpretación de errores
 
 ¿Qué demuestra el error al intentar consultar `email_contacto` desde la vista? ¿Significa que esa columna no existe en la tabla original?
+Demuestra que la vista restringe correctamente las columnas expuestas. No significa que la columna no exista en la tabla original, sino que la vista la oculta para que el usuario restringido no pueda acceder a ella.
 
 ### Pregunta 6. Mínimo privilegio
 
 ¿Qué riesgos podría tener una empresa si todos los usuarios tuvieran acceso directo a todas las tablas, aunque no necesitaran todos sus datos?
+Aumenta el riesgo de filtración de datos personales (incumplimiento de normativas de privacidad), modificaciones o borrados accidentales por errores humanos y dificulta la auditoría de seguridad al dar acceso innecesario a datos sensibles.
 
 ### Pregunta 7. Preparación para un cambio de gestor
 
 ¿Por qué resulta útil documentar la estructura de la tabla, las columnas de la vista y los permisos antes de comparar esta solución con otra base de datos, como MySQL?
+Permite tener una referencia clara del diseño y la política de permisos en Oracle. Esto facilita comparar cómo se implementan exactamente las mismas funciones (vistas, permisos y tablas) en otro motor como MySQL de forma ordenada.
 
 
 
